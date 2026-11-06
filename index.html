@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">💪 FitTrack</div>
+        <span>My Fitness Dashboard</span>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <h1>Stay Active, Stay Healthy!</h1>
+                <p>Track your daily fitness progress.</p>
+            </div>
+            <div class="date-box">
+                <label for="activityDate">Activity date</label>
+                <input type="date" id="activityDate">
+            </div>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card steps-card">
+                <span class="stat-icon">👟</span>
+                <p>Total Steps</p>
+                <h2 id="totalSteps">0</h2>
+                <small>Goal: 10,000 steps</small>
+                <div class="progress">
+                    <div id="stepsProgress" class="progress-fill"></div>
+                </div>
+            </article>
+
+            <article class="stat-card calories-card">
+                <span class="stat-icon">🔥</span>
+                <p>Calories Burned</p>
+                <h2 id="totalCalories">0</h2>
+                <small>Goal: 500 calories</small>
+                <div class="progress">
+                    <div id="caloriesProgress" class="progress-fill"></div>
+                </div>
+            </article>
+
+            <article class="stat-card workout-card">
+                <span class="stat-icon">⏱️</span>
+                <p>Workout Time</p>
+                <h2><span id="totalMinutes">0</span> <small>min</small></h2>
+                <small>Goal: 60 minutes</small>
+                <div class="progress">
+                    <div id="workoutProgress" class="progress-fill"></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>➕ Log Your Fitness Activity</h2>
+            <p class="muted">Enter the details of your completed activity.</p>
+
+            <form id="activityForm">
+                <div class="form-grid">
+                    <div>
+                        <label for="activityType">Activity type</label>
+                        <select id="activityType" required>
+                            <option value="Walking">Walking</option>
+                            <option value="Running">Running</option>
+                            <option value="Cycling">Cycling</option>
+                            <option value="Gym Workout">Gym Workout</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="stepsInput">Steps</label>
+                        <input type="number" id="stepsInput"
+                               min="0" max="100000" value="0" required>
+                    </div>
+
+                    <div>
+                        <label for="minutesInput">Duration (minutes)</label>
+                        <input type="number" id="minutesInput"
+                               min="1" max="1440" required
+                               placeholder="e.g. 30">
+                    </div>
+
+                    <div>
+                        <label for="caloriesInput">Calories burned</label>
+                        <input type="number" id="caloriesInput"
+                               min="0" max="20000" required
+                               placeholder="e.g. 150">
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Save Activity
+                </button>
+            </form>
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="panel">
+            <div class="history-heading">
+                <div>
+                    <h2>📋 Activity History</h2>
+                    <p class="muted">Activities recorded for the selected day.</p>
+                </div>
+                <button type="button" id="clearBtn" class="clear-btn">
+                    Clear Day
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Steps</th>
+                            <th>Minutes</th>
+                            <th>Calories</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityList"></tbody>
+                </table>
+            </div>
+            <p id="emptyMessage" class="muted">No activities recorded for this day.</p>
+        </section>
+
+        <footer>FitTrack | CodeAlpha Internship Project</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
